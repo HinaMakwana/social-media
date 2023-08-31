@@ -1,13 +1,23 @@
-const jwt = sails.config.custom.jwt
-const {status} = sails.config.constant
+const jwt = sails.config.custom.jwt;
+const {status} = sails.config.constant;
 
 module.exports =async (req,res,next) =>{
     try {
+			let val;
         const token = req.headers.authorization.split(" ")[1];
         const decoded = jwt.verify(token, process.env.JWT_KEY);
-        let user = await Users.findOne({id : decoded.id, isDeleted : false});
-        if(token === user.token) {
-            req.userData = decoded;
+        val = await Users.findOne({
+					id : decoded.id,
+					isDeleted : false
+				});
+				if(!val) {
+					val = await Admin.findOne({
+						id: decoded.id,
+						isDeleted : false
+					})
+				}
+        if(token === val.token) {
+            req.data = decoded;
             return next();
         } else {
             res.status(status.unAuthorized).json({
@@ -16,7 +26,7 @@ module.exports =async (req,res,next) =>{
         }
     } catch(error) {
         return res.status(status.unAuthorized).json({
-            message: 'User is not authorized'
+            message: 'error '+ error
         });
     }
 }

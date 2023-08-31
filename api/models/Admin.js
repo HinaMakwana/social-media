@@ -10,20 +10,30 @@ module.exports = {
   attributes: {
 
     name : {
-      type : 'string'
+      type : 'string',
+      required: true
     },
     email : {
-      type : 'string'
+      type : 'string',
+      required: true,
+      isEmail: true
     },
     password : {
-      type : 'string'
+      type : 'string',
+      required: true
     },
     profile_photo : {
-      type : 'string'
+      type : 'string',
+      allowNull: true
     },
     token : {
-      type : 'string'
+      type : 'string',
+      allowNull: true
     },
+    isDeleted: {
+      type : 'boolean',
+      defaultsTo: false
+    }
 
   },
 

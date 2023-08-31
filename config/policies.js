@@ -28,7 +28,8 @@ module.exports.policies = {
   AdminController : {
     logout : 'isAdmin',
     updateUser : 'isAdmin',
-    deleteUser : 'isAdmin'
+    deleteUser : 'isAdmin',
+    listAllUser : 'isAuthorized'
   },
   ProfileController : {
     '*' : 'isUser'

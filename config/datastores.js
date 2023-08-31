@@ -48,8 +48,13 @@ module.exports.datastores = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
-    adapter: 'sails-mysql',
+    // adapter: 'sails-mysql',
+    // url : process.env.myCred
+
+    adapter: 'sails-postgresql',
     url : process.env.myCred
+
+
   },
 
 

@@ -4,38 +4,46 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-
+let status = sails.config.constant.UserStatus;
+let type = sails.config.constant.accType;
 module.exports = {
 
   attributes: {
 
     username : {
       type : 'string',
+      required : true
     },
     name : {
-      type : 'string'
+      type : 'string',
+      required: true
     },
     email : {
-      type : 'string'
+      type : 'string',
+      required: true,
+      isEmail: true
     },
     password : {
-      type : 'string'
+      type : 'string',
+      required: true
     },
     profile_photo : {
-      type : 'string'
+      type : 'string',
+      allowNull: true
     },
     token : {
-      type : 'string'
+      type : 'string',
+      allowNull: true
     },
     status : {
       type : 'string',
-      isIn : ['A','I'],
-      defaultsTo : 'A'
+      isIn : [status.A,status.I],
+      defaultsTo : status.A
     },
     accType : {
       type : 'string',
-      isIn : ['PR','PU'],
-      defaultsTo : 'PU'
+      isIn : [type.PR,type.PU],
+      defaultsTo : type.PU
     },
     isDeleted : {
       type : 'boolean',

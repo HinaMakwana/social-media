@@ -9,6 +9,18 @@ const status = {
     serverError : 500
 }
 
+const UserStatus = {
+    A : "A",
+    I : "I"
+}
+
+const accType = {
+    PR : "PR",
+    PU : "PU"
+}
+
 module.exports.constant = {
-    status
+    status,
+    UserStatus,
+    accType
 }

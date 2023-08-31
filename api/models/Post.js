@@ -10,16 +10,20 @@ module.exports = {
   attributes: {
 
     media : {
-      type : 'string'
+      type : 'string',
+      required: true
     },
     title : {
-      type : 'string'
+      type : 'string',
+      required: true
     },
     caption : {
-      type : 'string'
+      type : 'string',
+      allowNull: true
     },
     postedBy : {
-      type : 'string'
+      type : 'string',
+      required: true
     },
     postedAt : {
       type : 'ref',
